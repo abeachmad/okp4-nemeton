@@ -31,7 +31,8 @@ This command will generate, in the $HOME/.okp4d folder, the following files:
  - config/node_key.json: Private key to use for node authentication in the p2p protocol.
  - config/priv_validator_key: Private key to use as a validator in the consensus protocol.
  - data: The node's database.
-## Make sure to backup the generated config/priv_validator_key and config/node_key.json because both are very sensible, if stolen the entire stake delegated to the validator is at risk.
+#### Make sure to backup the generated config/priv_validator_key and config/node_key.json because both are very sensible, if stolen the entire stake delegated to the validator is at risk.
+
 
 Now, let's download the official genesis.json:
 ```
@@ -67,10 +68,18 @@ Finally we can start the node:
 ```
 docker run -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest start --home /.okp4d
 ```
-# make your wallet if you don't have one:
-docker run -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest keys add <your wallet name> --keyring-backend test --home /.okp4d
-# remember to backup your mnemonic keys, this is the only one time you can see your mnemonic. You will never have an access anymore to view yoour mnemonic.
 
-# or recover your wallet if you already had one:
+## add wallet
+make your wallet if you don't have one:
+
+```
+docker run -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest keys add <your wallet name> --keyring-backend test --home /.okp4d
+```
+#### remember to backup your mnemonic keys, this is the only one time you can see your mnemonic. You will never have an access anymore to view yoour mnemonic.
+
+or recover your wallet if you already had one:
+```
 docker run -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest keys add <walletname> --recover --home /.okp4d
+```
+
 

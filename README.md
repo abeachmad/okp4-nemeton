@@ -61,13 +61,13 @@ okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
 rm -rf $HOME/.okp4d/data 
 rm -rf $HOME/.okp4d/wasm
 SNAP_NAME=$(curl -s https://snapshots2-testnet.nodejumper.io/okp4-testnet/ | egrep -o ">okp4-nemeton.*\.tar.lz4" | tr -d ">")
-curl https://snapshots2-testnet.nodejumper.io/okp4-testnet/${SNAP_NAME} | lz4 -dc - | tar -xf - -C $HOME/home
+curl https://snapshots2-testnet.nodejumper.io/okp4-testnet/${SNAP_NAME} | lz4 -dc - | tar -xf - -C $HOME/.okp4d
 mv $HOME/.okp4d/priv_validator_state.json.backup $HOME/.okp4d/data/priv_validator_state.json
 ```
 
 Finally we can start the node:
 ```
-docker run -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest start --home /.okp4d
+docker run --name okp4d --restart=unless-stopped -d -i -t -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest start --home /.okp4d
 ```
 
 ## add wallet
@@ -80,7 +80,7 @@ docker run -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest keys add <your wallet name
 
 or recover your wallet if you already had one:
 ```
-docker run -v $(pwd)/.okp4d:/.okp4d okp4/okp4d:latest keys add <walletname> --recover --home /.okp4d
+
 ```
 
 

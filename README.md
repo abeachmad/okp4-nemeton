@@ -1,8 +1,9 @@
 # How to run node validator of okp4 nemeton testnet using docker
-For your reference:
-okp4 official docker documentaion: https://github.com/okp4/okp4d
+#### For your reference:
+okp4 official docker documentaion: https://github.com/okp4/okp4d 
 state sync, seed and peers: https://nodejumper.io/okp4-testnet/sync
 
+## Initialize and running the node
 First, you need to pull the docker image from official docs.
 ```
 docker pull okp4/okp4d:latest
